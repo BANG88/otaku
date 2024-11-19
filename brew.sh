@@ -166,8 +166,13 @@ casks_list=(
 # Install cask applications
 echo "Starting Cask applications installation..."
 for cask in "${casks_list[@]}"; do
-  echo "Installing $cask..."
-  brew install --cask "$cask"
+  #   check if cask is already installed
+  if ! brew list --cask "$cask" &>/dev/null; then
+    echo "Installing $cask..."
+    brew install --cask "$cask"
+  else
+    echo "$cask is already installed"
+  fi
 done
 
 # Remove outdated versions from the cellar.
