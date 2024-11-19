@@ -23,7 +23,7 @@ brew install coreutils
 ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 # taps
 brew tap bramstein/webfonttools
-
+brew tap facebook/fb
 brew_list=(
   moreutils
   findutils
@@ -58,7 +58,7 @@ brew_list=(
   cocoapods
   coreutils
   curl
-  facebook/fb/idb-companion
+  idb-companion
   fd
   ffmpeg
   fnm
