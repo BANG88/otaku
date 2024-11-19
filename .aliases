@@ -11,6 +11,7 @@ alias p="cd ~/projects"
 alias h="history"
 alias j="jobs"
 alias v="nvim"
+alias my="cd ~/personal"
 
 # List directory contents
 alias ls="ls -G"
