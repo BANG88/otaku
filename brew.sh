@@ -145,10 +145,8 @@ casks_list=(
   iterm2
   localsend
   lyricsx
-  macfuse
   neteasemusic
   obs
-  onedrive
   quickrecorder
   rectangle
   royal-tsx
@@ -160,6 +158,12 @@ casks_list=(
   zed
   zulu@17
   visual-studio-code
+  wechat
+  imageoptim
+  firefox
+  microsoft-office
+  pgadmin4
+  tencent-meeting
 )
 
 # Install cask applications
