@@ -160,10 +160,10 @@ casks_list=(
   snipaste
   telegram
   the-unarchiver
-  visual-studio-code
   xcodes
   zed
-  zulu17
+  zulu@17
+  visual-studio-code
 )
 
 # Install cask applications
@@ -173,13 +173,7 @@ for cask in "${casks_list[@]}"; do
   brew install --cask "$cask"
 done
 
-# fnm install node@20
-fnm install 20
-fnm default 20
-fnm use 20
-
-# zsh
-source ~/.zshrc
-
 # Remove outdated versions from the cellar.
 brew cleanup
+
+source post.sh
