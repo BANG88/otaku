@@ -21,102 +21,98 @@ BREW_PREFIX=$(brew --prefix)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
 ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
-
-# Install some other useful utilities like `sponge`.
-brew install moreutils
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew install findutils
-# Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed
-
-# Install `wget` with IRI support.
-brew install wget
-
-# Install GnuPG to enable PGP-signing commits.
-brew install gnupg
-
-# Install more recent versions of some macOS tools.
-brew install vim
-brew install grep
-brew install openssh
-brew install screen
-
-# Install font tools.
+# taps
 brew tap bramstein/webfonttools
-brew install sfnt2woff
-brew install sfnt2woff-zopfli
-brew install woff2
 
-# Install other useful binaries.
-brew install ack
-brew install gs
-brew install imagemagick
-brew install lua
-brew install lynx
-brew install p7zip
-brew install pigz
-brew install pv
-brew install rename
-brew install rlwrap
-brew install ssh-copy-id
-brew install tree
-brew install unzip
+brew_list=(
+  moreutils
+  findutils
+  gnu-sed
+  wget
+  gnupg
+  vim
+  grep
+  openssh
+  screen
+  sfnt2woff
+  sfnt2woff-zopfli
+  woff2
+  ack
+  gs
+  imagemagick
+  lua
+  lynx
+  p7zip
+  pigz
+  pv
+  rename
+  ssh-copy-id
+  tree
+  unzip
+  rlwrap
+  automake
+  bat
+  cloudflared
+  cmake
+  biome
+  cocoapods
+  coreutils
+  curl
+  facebook/fb/idb-companion
+  fd
+  ffmpeg
+  fnm
+  fsouza/prettierd/prettierd
+  fzf
+  gh
+  git
+  git-filter-repo
+  git-lfs
+  git-town
+  go
+  graphviz
+  jq
+  lazygit
+  llvm
+  luarocks
+  maven
+  ncmdump
+  neovim
+  openssl
+  perl
+  pgloader
+  pnpm
+  protobuf
+  python@3.10
+  rbenv
+  ripgrep
+  sevenzip
+  the_silver_searcher
+  tmux
+  universal-ctags
+  vips
+  virtualenv
+  watchman
+  wget
+  wrk
+  yarn
+  zbar
+  zlib
+  zsh
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
 
-# Install development tools and utilities
-brew install automake
-brew install bat
-brew install cloudflared
-brew install cmake
-brew install biome
-brew install cocoapods
-brew install coreutils
-brew install curl
-brew install facebook/fb/idb-companion
-brew install fd
-brew install ffmpeg
-brew install fnm
-brew install fsouza/prettierd/prettierd
-brew install fzf
-brew install gh
-brew install git
-brew install git-filter-repo
-brew install git-lfs
-brew install git-town
-brew install go
-brew install graphviz
-brew install jq
-brew install lazygit
-brew install llvm
-brew install luarocks
-brew install maven
-brew install ncmdump
-brew install neovim
-brew install openssl
-brew install perl
-brew install pgloader
-brew install pnpm
-brew install protobuf
-brew install python@3.10
-brew install rbenv
-brew install ripgrep
-brew install sevenzip
-brew install the_silver_searcher
-brew install tmux
-brew install universal-ctags
-brew install vips
-brew install virtualenv
-brew install watchman
-brew install wget
-brew install wrk
-brew install yarn
-brew install zbar
-brew install zlib
-brew install zsh
-brew install zsh-autosuggestions
-brew install zsh-syntax-highlighting
+for brew in "${brew_list[@]}"; do
+  if ! brew list "$brew" &>/dev/null; then
+    echo "Installing $brew..."
+    brew install "$brew"
+  else
+    echo "$brew is already installed"
+  fi
+done
 
 # font lists
-
 fonts_list=(
   font-d2coding-nerd-font
   font-hack-nerd-font
@@ -126,10 +122,13 @@ fonts_list=(
 )
 
 for font in "${fonts_list[@]}"; do
-  brew install --cask "$font"
+  if ! brew list --cask "$font" &>/dev/null; then
+    echo "Installing $font..."
+    brew install --cask "$font"
+  else
+    echo "$font is already installed"
+  fi
 done
-
-# casks
 
 # Install cask applications
 casks_list=(
