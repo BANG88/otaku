@@ -4,12 +4,12 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_NDK_HOME=$ANDROID_HOME/ndk/26.1.10909125/
 export PATH=$PATH:$ANDROID_HOME/emulator
-
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=~/miniconda3/bin:$PATH
 export PYTHON_PATH=~/miniconda3/bin/python
 export GOPATH=$HOME/go
-export REACT_EDITOR=zed
+export REACT_EDITOR=nvim
+export XDG_CONFIG_HOME="$HOME/.config"
 
 export PATH=$PATH:$HOME/tools
 
