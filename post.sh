@@ -19,6 +19,17 @@ go install github.com/evilmartians/lefthook@latest
 fnm install 20
 fnm default 20
 fnm use 20
+# Check if bun is installed
+if ! command -v bun &>/dev/null; then
+	echo "Installing bun..."
+	curl -fsSL https://bun.sh/install | bash
+fi
+
+# Check if rust is installed
+if ! command -v rustup &>/dev/null; then
+	echo "Installing rust..."
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
 
 # zsh
 source ~/.zshrc

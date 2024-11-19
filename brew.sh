@@ -14,8 +14,6 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade
 
-curl -fsSL https://bun.sh/install | bash
-
 # Save Homebrew’s installed location.
 BREW_PREFIX=$(brew --prefix)
 
@@ -101,7 +99,6 @@ brew install protobuf
 brew install python@3.10
 brew install rbenv
 brew install ripgrep
-brew install rust
 brew install sevenzip
 brew install the_silver_searcher
 brew install tmux
