@@ -29,10 +29,10 @@ function doIt() {
 		touch ~/.zshrc
 	fi
 
-	# Add .brew_paths to .zshrc if not already included
-	if ! grep -q "source ~/.brew_paths" ~/.zshrc; then
-		echo "source ~/.brew_paths" >>~/.zshrc
-		echo "Added .brew_paths to .zshrc"
+	# Add .paths to .zshrc if not already included
+	if ! grep -q "source ~/.paths" ~/.zshrc; then
+		echo "source ~/.paths" >>~/.zshrc
+		echo "Added .paths to .zshrc"
 	fi
 
 	source ~/.zshrc
