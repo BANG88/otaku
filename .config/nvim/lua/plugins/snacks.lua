@@ -17,6 +17,9 @@ return {
 	  styles = {
 		notification = {
 		  wo = { wrap = true } -- Wrap notifications
+		},
+		win = {
+		  style = "terminal"
 		}
 	  }
 	},
