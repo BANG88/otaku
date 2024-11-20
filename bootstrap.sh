@@ -6,8 +6,8 @@ git pull origin main
 
 # Check if oh-my-zsh is installed
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-	# Install oh-my-zsh
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	# Install oh-my-zsh without running zsh at the end
+	RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 else
 	echo "oh-my-zsh is already installed, skipping installation"
 fi
