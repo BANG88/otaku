@@ -10,6 +10,8 @@ export PYTHON_PATH=~/miniconda3/bin/python
 export GOPATH=$HOME/go
 export REACT_EDITOR=nvim
 export XDG_CONFIG_HOME="$HOME/.config"
+export TURBO_TELEMETRY_DISABLED=1
+export DO_NOT_TRACK=1
 
 export PATH=$PATH:$HOME/tools
 
