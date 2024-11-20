@@ -18,6 +18,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 
 source ~/.aliases
+source ~/.extra
 
 eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 

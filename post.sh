@@ -31,11 +31,15 @@ if ! command -v rustup &>/dev/null; then
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
 
-
 # zsh
 source ~/.zshrc
 
+# mkdir
+if [ ! -d ~/personal ]; then
+	mkdir -p ~/personal
+fi
 
-# mkdir 
+# install global npm packages
 
-md ~/personal
+npm install -g aicommit2
+# usage: aicommit2 config set OPENAI.key=xxx
