@@ -63,3 +63,4 @@ Some of the functionality of these dotfiles depends on formulae installed by `br
 
 - https://github.com/openai-translator/openai-translator/releases
 - https://apps.apple.com/us/app/encrypto-secure-your-files/id935235287?mt=12
+- https://pinyin.sogou.com/mac/
