@@ -9,3 +9,5 @@ require("avante_lib").load()
 require("lualine").setup({
   options = { theme = "auto" },
 })
+
+require("ibl").setup()
