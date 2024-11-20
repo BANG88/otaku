@@ -18,6 +18,7 @@ function doIt() {
 		--exclude ".osx" \
 		--exclude ".macos" \
 		--exclude "brew.sh" \
+  		--exclude "post.sh" \
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \
