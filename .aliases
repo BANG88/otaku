@@ -53,7 +53,8 @@ alias dpsa="docker ps -a"
 
 # System shortcuts
 alias c="clear"
-alias reload="source ~/.zshrc"
+alias zshsource="source ~/.zshrc"
+alias zshconfig="nvim ~/.zshrc"
 alias path='echo -e ${PATH//:/\\n}'
 
 # Directory operations
