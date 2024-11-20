@@ -22,6 +22,15 @@ export PATH="/opt/homebrew/bin:$PATH"
 source ~/.aliases
 source ~/.extra
 
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit
+    compinit
+fi
+
 eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 
 # pnpm

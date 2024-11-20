@@ -101,6 +101,7 @@ brew_list=(
   zsh
   zsh-autosuggestions
   zsh-syntax-highlighting
+	zsh-completions
   lihaoyun6/tap/quickrecorder
 )
 
