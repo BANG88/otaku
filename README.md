@@ -1,10 +1,8 @@
 # Otaku
 
-> a copy of Mathias's dotfiles with some modifications.
+> My personal dotfiles. Use at your own risk!
 
 ## Installation
-
-**Warning:** If you want to give these dotfiles a try, you should first fork this repository, review the code, and remove things you don’t want or need. Don’t blindly use my settings unless you know what that entails. Use at your own risk!
 
 > If you are on a new machine, you should check `git --version` at first. You may need to install developer tools.
 
@@ -32,7 +30,7 @@ My `~/.extra` looks something like this:
 
 ```bash
 # Git credentials
-# Not in the repository, to prevent people from accidentally committing under my name
+# Use your own name and email
 GIT_AUTHOR_NAME="Ellen"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
 git config --global user.name "$GIT_AUTHOR_NAME"

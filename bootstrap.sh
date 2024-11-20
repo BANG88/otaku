@@ -13,12 +13,17 @@ else
 fi
 
 function doIt() {
+	local nvim_reply
+	read "nvim_reply?Remove ~/.config/nvim directory? (y/n) "
+	if [[ $nvim_reply =~ ^[Yy]$ ]]; then
+		rm -rf ~/.config/nvim
+	fi
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
 		--exclude ".osx" \
 		--exclude ".macos" \
 		--exclude "brew.sh" \
-  		--exclude "post.sh" \
+		--exclude "post.sh" \
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \

@@ -101,7 +101,7 @@ brew_list=(
   zsh
   zsh-autosuggestions
   zsh-syntax-highlighting
-	lihaoyun6/tap/quickrecorder
+  lihaoyun6/tap/quickrecorder
 )
 
 for brew in "${brew_list[@]}"; do
@@ -164,6 +164,7 @@ casks_list=(
   microsoft-office
   pgadmin4
   tencent-meeting
+  dotnet-sdk
 )
 
 # Install cask applications
