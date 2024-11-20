@@ -1,4 +1,4 @@
-n {
+return {
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -223,9 +223,6 @@ n {
       provider = "openai",
       auto_suggestions_provider = "openai",
     },
-    behaviour = {
-      auto_suggestions = true,
-    },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
@@ -264,7 +261,13 @@ n {
       },
     },
   },
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {},
+  },
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
