@@ -101,6 +101,7 @@ brew_list=(
   zsh
   zsh-autosuggestions
   zsh-syntax-highlighting
+	lihaoyun6/tap/quickrecorder
 )
 
 for brew in "${brew_list[@]}"; do
@@ -147,7 +148,6 @@ casks_list=(
   lyricsx
   neteasemusic
   obs
-  quickrecorder
   rectangle
   royal-tsx
   sequel-ace
