@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Install the Solarized Dark theme for iTerm
-open "${pwd}/init/Solarized Dark.itermcolors"
+open "init/Solarized Dark.itermcolors"
 
 # Finder
 
