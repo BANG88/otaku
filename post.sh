@@ -39,6 +39,10 @@ if [ ! -d ~/personal ]; then
 	mkdir -p ~/personal
 fi
 
+if [ ! -d ~/projects ]; then
+	mkdir -p ~/projects
+fi
+
 # install global npm packages
 
 npm install -g aicommit2
