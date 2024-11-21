@@ -8,4 +8,6 @@ require("lualine").setup({
   options = { theme = "auto" },
 })
 
-require("ibl").setup({})
+require("mini.indentscope").setup()
+
+--  require("ibl").setup({})

@@ -1,4 +1,5 @@
 return {
+  { "echasnovski/mini.nvim", version = false },
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -261,13 +262,15 @@ return {
       },
     },
   },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    ---@module "ibl"
-    ---@type ibl.config
-    opts = {},
-  },
+
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   main = "ibl",
+  --   ---@module "ibl"
+  --   ---@type ibl.config
+  --   opts = {},
+  -- },
+  --
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
@@ -316,10 +319,6 @@ return {
       "MunifTanjim/nui.nvim",
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
-  },
-  {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
   {
     enabled = false,
