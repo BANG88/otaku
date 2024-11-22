@@ -2,7 +2,7 @@ return {
   {
     "akinsho/toggleterm.nvim",
     version = "*",
-    opts = { direction = "float" },
+    opts = { direction = "horizontal" },
     keys = {
       { "<C-/>", "<cmd>ToggleTerm<cr>", desc = "Open ToggleTerm" },
     },
