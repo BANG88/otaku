@@ -1,5 +1,13 @@
 return {
-  { "akinsho/toggleterm.nvim", version = "*", config = true },
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    opts = { direction = "float" },
+    keys = {
+      { "<C-/>", "<cmd>ToggleTerm<cr>", desc = "Open ToggleTerm" },
+    },
+  },
+
   {
     "christoomey/vim-tmux-navigator",
     cmd = {

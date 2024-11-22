@@ -11,3 +11,5 @@ require("lualine").setup({
 require("mini.indentscope").setup()
 
 --  require("ibl").setup({})
+
+require("toggleterm").setup({})
