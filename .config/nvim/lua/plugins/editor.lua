@@ -1,6 +1,14 @@
 return {
   { "echasnovski/mini.nvim", version = false },
   {
+    "nanozuki/tabby.nvim",
+    -- event = 'VimEnter', -- if you want lazy load, see below
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+      -- configs...
+    end,
+  },
+  {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,

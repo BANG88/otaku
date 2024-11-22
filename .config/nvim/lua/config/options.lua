@@ -34,6 +34,10 @@ vim.opt.mouse = ""
 vim.opt.listchars = {
   tab = "  ",
 }
+vim.opt.showtabline = 2
+
+vim.opt.sessionoptions = "curdir,folds,globals,help,tabpages,terminal,winsize"
+
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
