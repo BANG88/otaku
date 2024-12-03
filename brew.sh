@@ -166,6 +166,7 @@ casks_list=(
   pgadmin4
   tencent-meeting
   dotnet-sdk
+	futubull
 )
 
 # Install cask applications
