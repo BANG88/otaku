@@ -1,4 +1,18 @@
 return {
+  {
+    "echasnovski/mini.surround",
+    opts = {
+      mappings = {
+        add = "gsa",
+        delete = "gsd",
+        find = "gsf",
+        find_left = "gsF",
+        highlight = "gsh",
+        replace = "gsr",
+        update_n_lines = "gsn",
+      },
+    },
+  },
   -- Create annotations with one keybind, and jump your cursor in the inserted annotation
   {
     "danymat/neogen",

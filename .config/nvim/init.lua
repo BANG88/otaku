@@ -13,3 +13,5 @@ require("mini.indentscope").setup()
 --  require("ibl").setup({})
 
 require("toggleterm").setup({})
+
+require("mini.move").setup()
