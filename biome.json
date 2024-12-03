@@ -1,0 +1,42 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.2/schema.json",
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"a11y": {
+				"useMediaCaption": "off",
+				"useSemanticElements": "off"
+			},
+			"style": {
+				"noUnusedTemplateLiteral": "off"
+			},
+			"complexity": {
+				"noForEach": "info",
+				"noUselessFragments": "off",
+				"noBannedTypes": "off"
+			},
+			"correctness": {
+				"useExhaustiveDependencies": "off",
+				"noUnusedImports": "info"
+			},
+			"suspicious": {
+				"noExplicitAny": "off"
+			},
+			"performance": {
+				"noAccumulatingSpread": "off"
+			},
+			"security": {
+				"noDangerouslySetInnerHtml": "info"
+			}
+		},
+		"ignore": ["tooling/utilities/*"]
+	},
+	"formatter": {
+		"enabled": true,
+		"ignore": ["node_modules/*", "*.config.*", ".turbo", "*.md"]
+	}
+}

@@ -7,7 +7,7 @@ CURRENT_DIR=$(pwd)
 cd $HOME
 
 # Generate config file
-bunx biome init
+#bunx biome init
 
 # Go back to original directory
 cd "$CURRENT_DIR"
