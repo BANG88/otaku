@@ -1,5 +1,8 @@
 return {
   {
+    "brenoprata10/nvim-highlight-colors",
+  },
+  {
     "akinsho/toggleterm.nvim",
     version = "*",
     opts = { direction = "horizontal" },
