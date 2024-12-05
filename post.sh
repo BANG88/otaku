@@ -31,6 +31,9 @@ if ! command -v rustup &>/dev/null; then
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
 
+python3 -m venv ~/.local --system-site-packages
+
+
 # zsh
 source ~/.zshrc
 
