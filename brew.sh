@@ -103,6 +103,7 @@ brew_list=(
   zsh-syntax-highlighting
 	zsh-completions
   lihaoyun6/tap/quickrecorder
+	bufbuild/buf/buf
 )
 
 for brew in "${brew_list[@]}"; do
