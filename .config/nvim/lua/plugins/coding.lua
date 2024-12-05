@@ -123,6 +123,9 @@ return {
       inlay_hints = { enabled = false },
       ---@type lspconfig.options
       servers = {
+        clangd = {
+          filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "hpp" },
+        },
         cssls = {},
         tailwindcss = {
           root_dir = function(...)
