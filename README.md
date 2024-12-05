@@ -17,7 +17,7 @@ git clone https://github.com/BANG88/otaku.git .otaku && cd .otaku && source boot
 To update, `cd` into your local `otaku` repository and then:
 
 ```bash
-set -- -f; source bootstrap.sh
+source bootstrap.sh
 ```
 
 To update later on, just run that command again.
