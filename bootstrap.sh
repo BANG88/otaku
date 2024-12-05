@@ -6,18 +6,18 @@ git pull origin main
 
 # Check if oh-my-zsh is installed
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-	# Install oh-my-zsh without running zsh at the end
-	RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	# Install oh-my-zsh
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 else
 	echo "oh-my-zsh is already installed, skipping installation"
 fi
 
 function doIt() {
-	local nvim_reply
-	read "nvim_reply?Remove ~/.config/nvim directory? (y/n) "
-	if [[ $nvim_reply =~ ^[Yy]$ ]]; then
+	# local nvim_reply
+	# read "nvim_reply?Remove ~/.config/nvim directory? (y/n) "
+	# if [[ $nvim_reply =~ ^[Yy]$ ]]; then
 		rm -rf ~/.config/nvim
-	fi
+	# fi
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
 		--exclude ".osx" \
@@ -44,13 +44,13 @@ function doIt() {
 	source ~/.zshrc
 }
 
-if [[ "$1" == "--force" || "$1" == "-f" ]]; then
+# if [[ "$1" == "--force" || "$1" == "-f" ]]; then
 	doIt
-else
-	read "REPLY?This may overwrite existing files in your home directory. Are you sure? (y/n) "
-	echo ""
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		doIt
-	fi
-fi
+# else
+# 	read "REPLY?This may overwrite existing files in your home directory. Are you sure? (y/n) "
+# 	echo ""
+# 	if [[ $REPLY =~ ^[Yy]$ ]]; then
+# 		doIt
+# 	fi
+# fi
 unset doIt
