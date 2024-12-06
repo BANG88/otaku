@@ -165,9 +165,9 @@ casks_list=(
   firefox
   microsoft-office
   pgadmin4
-  tencent-meeting
+  # tencent-meeting
   dotnet-sdk
-	futubull
+	# futubull
 )
 
 # Install cask applications
