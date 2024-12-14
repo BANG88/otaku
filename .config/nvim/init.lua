@@ -10,7 +10,9 @@ require("lualine").setup({
 
 require("mini.indentscope").setup()
 
---  require("ibl").setup({})
+require("mini.comment").setup()
+
+require("mini.completion").setup()
 
 require("toggleterm").setup({})
 
