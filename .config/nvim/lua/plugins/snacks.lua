@@ -6,57 +6,30 @@ return {
   opts = {
     bigfile = { enabled = true },
     dashboard = { enabled = true },
-    indent = { enabled = false },
-    input = { enabled = true },
     notifier = {
       enabled = true,
       timeout = 3000,
     },
     quickfile = { enabled = true },
-    scroll = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
+    terminal = { enabled = true },
     styles = {
       notification = {
-        -- wo = { wrap = true } -- Wrap notifications
+        wo = { wrap = true }, -- Wrap notifications
+      },
+      win = {
+        style = "terminal",
       },
     },
   },
   keys = {
     {
-      "<leader>z",
+      "<leader>un",
       function()
-        Snacks.zen()
+        Snacks.notifier.hide()
       end,
-      desc = "Toggle Zen Mode",
-    },
-    {
-      "<leader>Z",
-      function()
-        Snacks.zen.zoom()
-      end,
-      desc = "Toggle Zoom",
-    },
-    {
-      "<leader>.",
-      function()
-        Snacks.scratch()
-      end,
-      desc = "Toggle Scratch Buffer",
-    },
-    {
-      "<leader>S",
-      function()
-        Snacks.scratch.select()
-      end,
-      desc = "Select Scratch Buffer",
-    },
-    {
-      "<leader>n",
-      function()
-        Snacks.notifier.show_history()
-      end,
-      desc = "Notification History",
+      desc = "Dismiss All Notifications",
     },
     {
       "<leader>bd",
@@ -66,18 +39,11 @@ return {
       desc = "Delete Buffer",
     },
     {
-      "<leader>cR",
+      "<leader>gg",
       function()
-        Snacks.rename.rename_file()
+        Snacks.lazygit()
       end,
-      desc = "Rename File",
-    },
-    {
-      "<leader>gB",
-      function()
-        Snacks.gitbrowse()
-      end,
-      desc = "Git Browse",
+      desc = "Lazygit",
     },
     {
       "<leader>gb",
@@ -87,18 +53,18 @@ return {
       desc = "Git Blame Line",
     },
     {
+      "<leader>gB",
+      function()
+        Snacks.gitbrowse()
+      end,
+      desc = "Git Browse",
+    },
+    {
       "<leader>gf",
       function()
         Snacks.lazygit.log_file()
       end,
       desc = "Lazygit Current File History",
-    },
-    {
-      "<leader>gg",
-      function()
-        Snacks.lazygit()
-      end,
-      desc = "Lazygit",
     },
     {
       "<leader>gl",
@@ -108,11 +74,11 @@ return {
       desc = "Lazygit Log (cwd)",
     },
     {
-      "<leader>un",
+      "<leader>cR",
       function()
-        Snacks.notifier.hide()
+        Snacks.rename.rename_file()
       end,
-      desc = "Dismiss All Notifications",
+      desc = "Rename File",
     },
     {
       "<c-/>",
@@ -188,8 +154,6 @@ return {
         Snacks.toggle.treesitter():map("<leader>uT")
         Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
         Snacks.toggle.inlay_hints():map("<leader>uh")
-        Snacks.toggle.indent():map("<leader>ug")
-        Snacks.toggle.dim():map("<leader>uD")
       end,
     })
   end,
