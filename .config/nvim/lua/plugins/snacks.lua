@@ -9,7 +9,7 @@ return {
       sections = {
         {
           section = "terminal",
-          cmd = "chafa ~/.config/zoro.avif --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
+          cmd = "chafa ~/.config/zoro.avif -c 240 --dither bayer --dither-grain 4 --format symbols --symbols vhalf --size 60x18 --stretch; sleep .1",
           height = 16,
           padding = 1,
         },
