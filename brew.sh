@@ -105,6 +105,7 @@ brew_list=(
 	zsh-completions
   lihaoyun6/tap/quickrecorder
 	bufbuild/buf/buf
+	fastlane
 )
 
 for brew in "${brew_list[@]}"; do
