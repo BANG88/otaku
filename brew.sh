@@ -170,6 +170,7 @@ casks_list=(
   # tencent-meeting
   dotnet-sdk
 	# futubull
+	ghostty
 )
 
 # Install cask applications
