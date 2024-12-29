@@ -11,7 +11,7 @@ gui:
 customCommands:
   - key: <c-a>
     description: Pick AI commit
-    command: aicommit2
+    command: aicommit2 -a -y
     context: files
     subprocess: true
     showOutput: true
