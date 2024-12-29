@@ -4,6 +4,8 @@ discipline.cowboy()
 
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
 
 -- Do things without affecting the registers
 keymap.set("n", "x", '"_x')

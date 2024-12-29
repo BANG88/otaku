@@ -21,5 +21,3 @@ require("mini.move").setup()
 require("nvim-highlight-colors").setup({})
 
 require("lspconfig").buf_ls.setup({})
-
-require("copilot").setup({})
