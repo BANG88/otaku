@@ -8,6 +8,11 @@ gui:
   # If true (default), file icons are shown in the file views. Only relevant if NerdFontsVersion is not empty.
   showFileIcons: true
 
+# Keybindings
+keybinding:
+  universal:
+    quit: <esc>
+
 customCommands:
   - key: <c-a>
     description: Pick AI commit
