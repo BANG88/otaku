@@ -9,8 +9,8 @@ macos-icon-ghost-color = #673ab7
 macos-icon-screen-color = #e91e63
 
 #custom-shader = shaders/animated-gradient-shader.glsl
-custom-shader = shaders/just-snow.glsl
-
+#custom-shader = shaders/just-snow.glsl
+custom-shader = shaders/matrix-hallway.glsl
 
 
 
