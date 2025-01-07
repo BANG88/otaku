@@ -10,9 +10,9 @@ macos-icon-screen-color = #e91e63
 
 #custom-shader = shaders/animated-gradient-shader.glsl
 #custom-shader = shaders/just-snow.glsl
-custom-shader = shaders/matrix-hallway.glsl
+#custom-shader = shaders/matrix-hallway.glsl
 
-
+custom-shader = shaders/water.glsl
 
 # The command to run, usually a shell. If this is not an absolute path, it'll
 # be looked up in the `PATH`. If this is not set, a default will be looked up
