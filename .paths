@@ -54,3 +54,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 . "$HOME/.cargo/env"
 
 eval "$(rbenv init - zsh)"
+# ~/.zprofile
+eval "$(mise activate zsh --shims)"

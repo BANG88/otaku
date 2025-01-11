@@ -108,7 +108,7 @@ font-size = 15
 #
 # macOS: To hide the titlebar without removing the native window borders
 #        or rounded corners, use `macos-titlebar-style = hidden` instead.
- macos-titlebar-style = hidden
+# macos-titlebar-style = hidden
 
 # Confirms that a surface should be closed before closing it. This defaults to
 # true. If set to false, surfaces will close without any confirmation.

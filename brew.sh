@@ -25,6 +25,7 @@ ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 brew tap bramstein/webfonttools
 brew tap facebook/fb
 brew_list=(
+	mise
   chafa
   moreutils
   findutils
