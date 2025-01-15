@@ -15,10 +15,10 @@ cd "$CURRENT_DIR"
 # Install lefthook
 go install github.com/evilmartians/lefthook@latest
 
-# fnm install node@20
-fnm install 20
-fnm default 20
-fnm use 20
+# fnm install node@22
+fnm install 22
+fnm default 22
+fnm use 22
 # Check if bun is installed
 if ! command -v bun &>/dev/null; then
 	echo "Installing bun..."
