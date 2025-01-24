@@ -85,7 +85,7 @@ brew_list=(
   pgloader
   pnpm
   protobuf
-  python@3.10
+  python@3.11
   rbenv
   ripgrep
   sevenzip
