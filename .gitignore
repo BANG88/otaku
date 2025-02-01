@@ -13,3 +13,4 @@ Thumbs.db
 .Spotlight-V100
 .Trashes
 lazy-lock.json
+.webui_secret_key
