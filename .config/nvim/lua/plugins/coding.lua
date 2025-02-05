@@ -1,19 +1,21 @@
 return {
+  -- Surround text objects
   {
     "echasnovski/mini.surround",
     opts = {
       mappings = {
-        add = "gsa",
-        delete = "gsd",
-        find = "gsf",
-        find_left = "gsF",
-        highlight = "gsh",
-        replace = "gsr",
-        update_n_lines = "gsn",
+        add = "gsa",        -- Add surrounding
+        delete = "gsd",     -- Delete surrounding
+        find = "gsf",       -- Find surrounding
+        find_left = "gsF",  -- Find surrounding to the left
+        highlight = "gsh",  -- Highlight surrounding
+        replace = "gsr",    -- Replace surrounding
+        update_n_lines = "gsn", -- Update n lines
       },
     },
   },
-  -- Create annotations with one keybind, and jump your cursor in the inserted annotation
+
+  -- Code annotation generator
   {
     "danymat/neogen",
     keys = {
@@ -22,7 +24,7 @@ return {
         function()
           require("neogen").generate({})
         end,
-        desc = "Neogen Comment",
+        desc = "Generate Annotation",
       },
     },
     opts = { snippet_engine = "luasnip" },
@@ -35,7 +37,7 @@ return {
     config = true,
   },
 
-  -- Refactoring tool
+  -- Refactoring tools
   {
     "ThePrimeagen/refactoring.nvim",
     keys = {
@@ -53,7 +55,7 @@ return {
     opts = {},
   },
 
-  -- Go forward/backward with square brackets
+  -- Bracket navigation
   {
     "echasnovski/mini.bracketed",
     event = "BufReadPost",
@@ -69,10 +71,9 @@ return {
     end,
   },
 
-  -- Better increase/descrease
+  -- Number increment/decrement
   {
     "monaqa/dial.nvim",
-    -- stylua: ignore
     keys = {
       { "<C-a>", function() return require("dial.map").inc_normal() end, expr = true, desc = "Increment" },
       { "<C-x>", function() return require("dial.map").dec_normal() end, expr = true, desc = "Decrement" },
@@ -91,6 +92,8 @@ return {
       })
     end,
   },
+
+  -- Auto completion
   {
     "nvim-cmp",
     dependencies = { "hrsh7th/cmp-emoji" },
@@ -99,29 +102,11 @@ return {
     end,
   },
 
-  -- tools
-  {
-    "williamboman/mason.nvim",
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, {
-        "stylua",
-        "selene",
-        "luacheck",
-        "shellcheck",
-        "shfmt",
-        "tailwindcss-language-server",
-        "typescript-language-server",
-        "css-lsp",
-      })
-    end,
-  },
-
-  -- lsp servers
+  -- LSP Configuration
   {
     "neovim/nvim-lspconfig",
     opts = {
       inlay_hints = { enabled = false },
-      ---@type lspconfig.options
       servers = {
         clangd = {
           filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "hpp" },
@@ -171,7 +156,6 @@ return {
           },
         },
         lua_ls = {
-          -- enabled = false,
           single_file_support = true,
           settings = {
             Lua = {
@@ -181,11 +165,6 @@ return {
               completion = {
                 workspaceWord = true,
                 callSnippet = "Both",
-              },
-              misc = {
-                parameters = {
-                  -- "--log-level=trace",
-                },
               },
               hint = {
                 enable = true,
@@ -203,7 +182,6 @@ return {
               },
               diagnostics = {
                 disable = { "incomplete-signature-doc", "trailing-space" },
-                -- enable = false,
                 groupSeverity = {
                   strong = "Warning",
                   strict = "Warning",
@@ -238,5 +216,83 @@ return {
       },
       setup = {},
     },
+  },
+
+  -- Auto pairs
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+    opts = {},
+  },
+
+  -- Comments
+  {
+    "numToStr/Comment.nvim",
+    opts = {},
+    lazy = false,
+  },
+
+  -- TODO comments
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
+
+  -- Treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "astro",
+        "cmake",
+        "cpp",
+        "css",
+        "fish",
+        "gitignore",
+        "go",
+        "graphql",
+        "http",
+        "java",
+        "php",
+        "rust",
+        "scss",
+        "sql",
+        "svelte",
+      },
+      query_linter = {
+        enable = true,
+        use_virtual_text = true,
+        lint_events = { "BufWrite", "CursorHold" },
+      },
+      playground = {
+        enable = true,
+        disable = {},
+        updatetime = 25,
+        persist_queries = true,
+        keybindings = {
+          toggle_query_editor = "o",
+          toggle_hl_groups = "i",
+          toggle_injected_languages = "t",
+          toggle_anonymous_nodes = "a",
+          toggle_language_display = "I",
+          focus_language = "f",
+          unfocus_language = "F",
+          update = "R",
+          goto_node = "<cr>",
+          show_help = "?",
+        },
+      },
+    },
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+      vim.filetype.add({
+        extension = {
+          mdx = "mdx",
+        },
+      })
+      vim.treesitter.language.register("markdown", "mdx")
+    end,
   },
 }

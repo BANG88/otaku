@@ -1,119 +1,55 @@
 return {
-  {
-    "brenoprata10/nvim-highlight-colors",
-  },
+  -- Terminal integration
   {
     "akinsho/toggleterm.nvim",
     version = "*",
     opts = { direction = "horizontal" },
     keys = {
-      { "<C-/>", "<cmd>ToggleTerm<cr>", desc = "Open ToggleTerm" },
+      { "<C-/>", "<cmd>ToggleTerm<cr>", desc = "Open Terminal" },
     },
   },
 
+  -- Tmux navigation
   {
-    "christoomey/vim-tmux-navigator",
-    cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-      "TmuxNavigatePrevious",
-    },
-    keys = {
-      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-    },
-  },
-  { "echasnovski/mini.nvim", version = false },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-  },
-  -- messages, cmdline and the popupmenu
-  {
-    "folke/noice.nvim",
-    opts = function(_, opts)
-      table.insert(opts.routes, {
-        filter = {
-          event = "notify",
-          find = "No information available",
-        },
-        opts = { skip = true },
+    "alexghergh/nvim-tmux-navigation",
+    config = function()
+      local nvim_tmux_nav = require("nvim-tmux-navigation")
+      nvim_tmux_nav.setup({
+        disable_when_zoomed = true,
       })
-      local focused = true
-      vim.api.nvim_create_autocmd("FocusGained", {
-        callback = function()
-          focused = true
-        end,
-      })
-      vim.api.nvim_create_autocmd("FocusLost", {
-        callback = function()
-          focused = false
-        end,
-      })
-      table.insert(opts.routes, 1, {
-        filter = {
-          cond = function()
-            return not focused
-          end,
-        },
-        view = "notify_send",
-        opts = { stop = false },
-      })
-
-      opts.commands = {
-        all = {
-          -- options for the message history that you get with `:Noice`
-          view = "split",
-          opts = { enter = true, format = "details" },
-          filter = {},
-        },
-      }
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "markdown",
-        callback = function(event)
-          vim.schedule(function()
-            require("noice.text.markdown").keys(event.buf)
-          end)
-        end,
-      })
-
-      opts.presets.lsp_doc_border = true
+      vim.keymap.set("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+      vim.keymap.set("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+      vim.keymap.set("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+      vim.keymap.set("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+      vim.keymap.set("n", "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
+      vim.keymap.set("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
     end,
   },
 
-  -- animations
+  -- Mini plugins
   {
-    "echasnovski/mini.animate",
-    event = "VeryLazy",
+    "echasnovski/mini.nvim",
+    version = false,
   },
 
-  -- buffer line
+  -- Buffer line
   {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
     keys = {
-      { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
-      { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
+      { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next Tab" },
+      { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Previous Tab" },
     },
     opts = {
       options = {
         mode = "tabs",
-        -- separator_style = "slant",
         show_buffer_close_icons = false,
         show_close_icon = false,
       },
     },
   },
 
-  -- filename
+  -- Filename in window
   {
     "b0o/incline.nvim",
     dependencies = { "craftzdog/solarized-osaka.nvim" },
@@ -145,7 +81,7 @@ return {
     end,
   },
 
-  -- statusline
+  -- Status line
   {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
@@ -164,208 +100,27 @@ return {
     end,
   },
 
-  {
-    "folke/zen-mode.nvim",
-    cmd = "ZenMode",
-    opts = {
-      plugins = {
-        gitsigns = true,
-        tmux = true,
-        kitty = { enabled = false, font = "+8" },
-      },
-    },
-    keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
+  -- Debug UI
+  { 
+    "rcarriga/nvim-dap-ui", 
+    dependencies = { 
+      "mfussenegger/nvim-dap", 
+      "nvim-neotest/nvim-nio" 
+    } 
   },
 
-  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
-  { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "astro",
-        "cmake",
-        "cpp",
-        "css",
-        "fish",
-        "gitignore",
-        "go",
-        "graphql",
-        "http",
-        "java",
-        "php",
-        "rust",
-        "scss",
-        "sql",
-        "svelte",
-      },
-
-      -- matchup = {
-      -- 	enable = true,
-      -- },
-
-      -- https://github.com/nvim-treesitter/playground#query-linter
-      query_linter = {
-        enable = true,
-        use_virtual_text = true,
-        lint_events = { "BufWrite", "CursorHold" },
-      },
-
-      playground = {
-        enable = true,
-        disable = {},
-        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-        persist_queries = true, -- Whether the query persists across vim sessions
-        keybindings = {
-          toggle_query_editor = "o",
-          toggle_hl_groups = "i",
-          toggle_injected_languages = "t",
-          toggle_anonymous_nodes = "a",
-          toggle_language_display = "I",
-          focus_language = "f",
-          unfocus_language = "F",
-          update = "R",
-          goto_node = "<cr>",
-          show_help = "?",
-        },
-      },
-    },
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
-
-      -- MDX
-      vim.filetype.add({
-        extension = {
-          mdx = "mdx",
-        },
-      })
-      vim.treesitter.language.register("markdown", "mdx")
-    end,
-  },
-
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    ---@module "ibl"
-    ---@type ibl.config
-    opts = {
-      enabled = false,
-    },
-  },
-
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    config = true,
-    opts = {},
-  },
-  {
-    "numToStr/Comment.nvim",
-    opts = {
-      -- add any options here
-    },
-    lazy = false,
-  },
-  {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
-  },
-  { "stevearc/dressing.nvim", opts = {} },
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-    end,
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-    },
-  },
+  -- File explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-    },
-  },
-  {
-    enabled = false,
-    "folke/flash.nvim",
-    ---@type Flash.Config
-    opts = {
-      search = {
-        forward = true,
-        multi_window = false,
-        wrap = false,
-        incremental = true,
-      },
-    },
-  },
-
-  {
-    "echasnovski/mini.hipatterns",
-    event = "BufReadPre",
-    opts = {
-      highlighters = {
-        hsl_color = {
-          pattern = "hsl%(%d+,? %d+%%?,? %d+%%?%)",
-          group = function(_, match)
-            local utils = require("solarized-osaka.hsl")
-            --- @type string, string, string
-            local nh, ns, nl = match:match("hsl%((%d+),? (%d+)%%?,? (%d+)%%?%)")
-            --- @type number?, number?, number?
-            local h, s, l = tonumber(nh), tonumber(ns), tonumber(nl)
-            --- @type string
-            local hex_color = utils.hslToHex(h, s, l)
-            return MiniHipatterns.compute_hex_color_group(hex_color, "bg")
-          end,
-        },
-      },
-    },
-  },
-  {
-    "dinhhuy258/git.nvim",
-    event = "BufReadPre",
-    opts = {
-      keymaps = {
-        -- Open blame window
-        blame = "<Leader>gb",
-        -- Open file/folder in git repository
-        browse = "<Leader>go",
-      },
-    },
-  },
-
-  {
-    "SuperBo/fugit2.nvim",
-    opts = {
-      width = 100,
-    },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
       "nvim-tree/nvim-web-devicons",
-      "nvim-lua/plenary.nvim",
-      {
-        "chrisgrieser/nvim-tinygit", -- optional: for Github PR view
-        dependencies = { "stevearc/dressing.nvim" },
-      },
-    },
-    cmd = { "Fugit2", "Fugit2Diff", "Fugit2Graph" },
-    keys = {
-      { "<leader>F", mode = "n", "<cmd>Fugit2<cr>" },
+      "MunifTanjim/nui.nvim",
     },
   },
+
+  -- Telescope file browser
   {
     "telescope.nvim",
     dependencies = {
@@ -394,7 +149,7 @@ return {
             hidden = true,
           })
         end,
-        desc = "Lists files in your current working directory, respects .gitignore",
+        desc = "Find Files",
       },
       {
         ";r",
@@ -404,7 +159,7 @@ return {
             additional_args = { "--hidden" },
           })
         end,
-        desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
+        desc = "Live Grep",
       },
       {
         "\\\\",
@@ -412,7 +167,7 @@ return {
           local builtin = require("telescope.builtin")
           builtin.buffers()
         end,
-        desc = "Lists open buffers",
+        desc = "Open Buffers",
       },
       {
         ";t",
@@ -420,7 +175,7 @@ return {
           local builtin = require("telescope.builtin")
           builtin.help_tags()
         end,
-        desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
+        desc = "Help Tags",
       },
       {
         ";;",
@@ -428,7 +183,7 @@ return {
           local builtin = require("telescope.builtin")
           builtin.resume()
         end,
-        desc = "Resume the previous telescope picker",
+        desc = "Resume Last Search",
       },
       {
         ";e",
@@ -436,7 +191,7 @@ return {
           local builtin = require("telescope.builtin")
           builtin.diagnostics()
         end,
-        desc = "Lists Diagnostics for all open buffers or a specific buffer",
+        desc = "Diagnostics",
       },
       {
         ";s",
@@ -444,17 +199,15 @@ return {
           local builtin = require("telescope.builtin")
           builtin.treesitter()
         end,
-        desc = "Lists Function names, variables, from Treesitter",
+        desc = "Treesitter Symbols",
       },
       {
         "sf",
         function()
           local telescope = require("telescope")
-
           local function telescope_buffer_dir()
             return vim.fn.expand("%:p:h")
           end
-
           telescope.extensions.file_browser.file_browser({
             path = "%:p:h",
             cwd = telescope_buffer_dir(),
@@ -466,7 +219,7 @@ return {
             layout_config = { height = 40 },
           })
         end,
-        desc = "Open File Browser with the path of the current buffer",
+        desc = "File Browser",
       },
     },
     config = function(_, opts)
@@ -496,12 +249,9 @@ return {
       opts.extensions = {
         file_browser = {
           theme = "dropdown",
-          -- disables netrw and use telescope-file-browser in its place
           hijack_netrw = true,
           mappings = {
-            -- your custom insert mode mappings
             ["n"] = {
-              -- your custom normal mode mappings
               ["N"] = fb_actions.create,
               ["h"] = fb_actions.goto_parent_dir,
               ["/"] = function()

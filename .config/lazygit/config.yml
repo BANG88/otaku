@@ -1,4 +1,3 @@
-
 # Config relating to the Lazygit UI
 gui:
   # Nerd fonts version to use.
@@ -9,21 +8,178 @@ gui:
   # If true (default), file icons are shown in the file views. Only relevant if NerdFontsVersion is not empty.
   showFileIcons: true
 
+  theme:
+    activeBorderColor:
+      - "#ff9e64"
+      - "bold"
+    inactiveBorderColor:
+      - "#27a1b9"
+    searchingActiveBorderColor:
+      - "#ff9e64"
+      - "bold"
+    optionsTextColor:
+      - "#7aa2f7"
+    selectedLineBgColor:
+      - "#283457"
+    cherryPickedCommitFgColor:
+      - "#7aa2f7"
+    cherryPickedCommitBgColor:
+      - "#bb9af7"
+    markedBaseCommitFgColor:
+      - "#7aa2f7"
+    markedBaseCommitBgColor:
+      - "#e0af68"
+    unstagedChangesColor:
+      - "#db4b4b"
+    defaultFgColor:
+      - "#c0caf5"
+
 # Keybindings
-# keybinding:
-#   universal:
-#     quit: <esc>
-#
-#
+keybinding:
+  universal:
+    quit: "q"
+    return: "<esc>"
+    togglePanel: "<tab>"
+    prevItem: "<up>"
+    nextItem: "<down>"
+    prevPage: ","
+    nextPage: "."
+    gotoTop: "<"
+    gotoBottom: ">"
+
+  commits:
+    moveDownCommit: "<c-n>" # Move commit down
+    moveUpCommit: "<c-p>" # Move commit up
+
+  files:
+    ignoreFile: "i" # Add to .gitignore
+
 customCommands:
-  - key: <c-a>
-    description: Pick AI commit
-    command: aicommit2 -a -y
-    context: files
+  # Global commands
+  - key: "<c-y>" # sYnc
+    context: "global"
+    description: "Git-Town: Sync branches"
+    command: "git-town sync"
+    stream: true
+    loadingText: "Syncing"
+
+  - key: "<c-u>" # Undo
+    context: "global"
+    description: "Git-Town: Undo last command"
+    command: "git-town undo"
+    prompts:
+      - type: "confirm"
+        title: "Undo Last Command"
+        body: "Are you sure you want to Undo the last git-town command?"
+    stream: true
+    loadingText: "Undoing Git-Town Command"
+
+  - key: "<c-o>" # Open
+    context: "global"
+    description: "Git-Town: Open repo link"
+    command: "git-town repo"
+    stream: true
+    loadingText: "Opening Repo Link"
+
+  # Branch management commands
+  - key: "<c-a>" # Append
+    context: "localBranches"
+    description: "Git-Town: Append branch"
+    prompts:
+      - type: "input"
+        title: "Enter name of new child branch"
+        key: "BranchName"
+    command: "git-town append {{.Form.BranchName}}"
+    stream: true
+    loadingText: "Appending"
+
+  - key: "<c-n>" # New
+    context: "localBranches"
+    description: "Git-Town: Create new branch"
+    prompts:
+      - type: "input"
+        title: "Enter name of new branch"
+        key: "BranchName"
+    command: "git-town hack {{.Form.BranchName}}"
+    stream: true
+    loadingText: "Creating branch"
+
+  - key: "<c-v>" # backup (saVe)
+    context: "localBranches"
+    description: "Backup branch"
+    command: "git checkout -b backup/$(date +%Y%m%d_%H%M%S)"
+    subprocess: true
+
+  - key: "<c-d>" # Delete
+    context: "localBranches"
+    description: "Git-Town: Delete feature branch and sync"
+    command: "git-town delete"
+    prompts:
+      - type: "confirm"
+        title: "Delete current feature branch"
+        body: "Are you sure you want to delete the current feature branch?"
+    stream: true
+    loadingText: "Deleting Feature Branch"
+
+  - key: "<c-p>" # Pull request
+    context: "localBranches"
+    description: "Git-Town: Create pull request"
+    command: "git-town propose"
+    stream: true
+    loadingText: "Creating pull request"
+
+  - key: "<c-r>" # inseRt
+    context: "localBranches"
+    description: "Git-Town: Insert branch between current and parent"
+    prompts:
+      - type: "input"
+        title: "Enter name for new branch"
+        key: "BranchName"
+    command: "git-town prepend {{.Form.BranchName}}"
+    stream: true
+    loadingText: "Inserting branch"
+
+  - key: "<c-s>" # Skip
+    context: "localBranches"
+    description: "Git-Town: Skip branch with conflicts"
+    command: "git-town skip"
+    stream: true
+    loadingText: "Skipping"
+
+  # File operations
+  - key: "<c-x>" # Continue (neXt)
+    context: "files"
+    description: "Git-Town: Continue after resolving conflicts"
+    command: "git-town continue"
+    stream: true
+    loadingText: "Continuing"
+
+  - key: "<c-e>" # gEnerate commit
+    context: "files"
+    description: "AI commit"
+    command: "aicommit2 -y"
     subprocess: true
     showOutput: true
-  - key: <c-n>
-    description: Pick AI commit (no verify)
-    command: git add . && git commit --no-verify -m "wip" --no-gpg-sign
-    context: files
+
+  - key: "<c-w>" # WIP
+    context: "files"
+    description: "Quick WIP commit"
+    command: 'git add . && git commit --no-verify -m "wip" --no-gpg-sign'
+    subprocess: false
+
+  - key: "<c-t>" # sTash
+    context: "files"
+    description: "Stash all changes"
+    command: 'git stash save "Quick stash at $(date +%Y-%m%d_%H:%M:%S)"'
+    subprocess: true
+
+  # Commit operations
+  - key: "<c-z>" # undo (Z for undo)
+    context: "commits"
+    description: "Undo last commit (keep changes)"
+    command: "git reset --soft HEAD^"
+    prompts:
+      - type: "confirm"
+        title: "Undo Last Commit"
+        body: "Are you sure you want to undo the last commit (keeping changes)?"
     subprocess: true
