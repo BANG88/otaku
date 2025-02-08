@@ -110,17 +110,6 @@ customCommands:
     command: "git checkout -b backup/$(date +%Y%m%d_%H%M%S)"
     subprocess: true
 
-  - key: "<c-d>" # Delete
-    context: "localBranches"
-    description: "Git-Town: Delete feature branch and sync"
-    command: "git-town delete"
-    prompts:
-      - type: "confirm"
-        title: "Delete current feature branch"
-        body: "Are you sure you want to delete the current feature branch?"
-    stream: true
-    loadingText: "Deleting Feature Branch"
-
   - key: "<c-p>" # Pull request
     context: "localBranches"
     description: "Git-Town: Create pull request"
@@ -160,6 +149,14 @@ customCommands:
     command: "aicommit2 -y"
     subprocess: true
     showOutput: true
+
+  - key: "<c-d>" # gEnerate commit
+    context: "files"
+    description: "AI commit"
+    command: "aicommit2 -y -l zh-TW -t gitmoji -g 1"
+    subprocess: true
+    showOutput: true
+
 
   - key: "<c-w>" # WIP
     context: "files"
