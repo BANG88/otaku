@@ -153,7 +153,7 @@ customCommands:
   - key: "<c-d>" # gEnerate commit
     context: "files"
     description: "AI commit"
-    command: "aicommit2 -y -l \"zh-TW\" -t \"gitmoji\" -g 1"
+    command: "aicommit2 -y -l \"zh-CN\" -t \"gitmoji\" -g 1"
     subprocess: true
     showOutput: true
 
