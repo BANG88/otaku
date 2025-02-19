@@ -20,14 +20,11 @@ return {
       sections = {
         {
           section = "terminal",
-          cmd = "chafa ~/.config/zoro.avif -c 240 --dither bayer --dither-grain 4 --format symbols --symbols vhalf --size 60x18 --stretch; sleep .1",
+          cmd = "chafa ~/.config/zoro.avif -c 240 --dither bayer --dither-grain 4 --format symbols --symbols vhalf --size 80x18 --stretch; sleep .1",
           height = 16,
           padding = 1,
         },
-        { pane = 2, section = "keys", gap = 1, padding = 1 },
-        { pane = 2, gap = 1, padding = 1 },
-        { pane = 1, gap = 1, padding = 1 },
-        { pane = 1, section = "startup" },
+        { pane = 1, section = "keys", gap = 1, padding = 1 },
       },
     },
     indent = { enabled = false },
